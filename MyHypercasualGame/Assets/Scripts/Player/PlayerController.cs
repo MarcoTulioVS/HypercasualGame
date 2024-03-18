@@ -14,8 +14,20 @@ public class PlayerController : MonoBehaviour
     public float speed;
 
     private Vector3 _pos;
+    private bool _canRun;
+
+    public string tagToCheckEnemy = "Enemy";
+
+    private void Start()
+    {
+        _canRun = true;
+    }
     private void Update()
     {
+        if (!_canRun)
+        {
+            return;
+        }
         _pos = target.position;
 
         _pos.y = transform.position.y;
@@ -23,5 +35,13 @@ public class PlayerController : MonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, _pos, lerpSpeed * Time.deltaTime);
         transform.Translate(transform.forward * speed * Time.deltaTime);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == tagToCheckEnemy)
+        {
+            _canRun = false;
+        }
     }
 }
