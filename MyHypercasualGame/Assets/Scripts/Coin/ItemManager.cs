@@ -32,13 +32,13 @@ public class ItemManager : Singleton<ItemManager>
 
     private void UpdateUI()
     {
-        UIInGameManager.instance.uiTextCoins.text = coins.value.ToString();
+        //UIInGameManager.instance.uiTextCoins.text = coins.value.ToString();
         
         
     }
     private void UpdateUIPlanet()
     {
 
-        UIInGameManager.instance.uiTextPlanets.text = planets.value.ToString();
+        //UIInGameManager.instance.uiTextPlanets.text = planets.value.ToString();
     }
 }
