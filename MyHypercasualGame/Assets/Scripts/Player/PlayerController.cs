@@ -17,10 +17,14 @@ public class PlayerController : MonoBehaviour
     private bool _canRun;
 
     public string tagToCheckEnemy = "Enemy";
+    public string tagToCheckEndLine = "EndLine";
+
+    public GameObject endScreen;
+    public GameObject startScreen;
 
     private void Start()
     {
-        _canRun = true;
+       
     }
     private void Update()
     {
@@ -41,7 +45,28 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.transform.tag == tagToCheckEnemy)
         {
-            _canRun = false;
+            EndGame();
         }
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if(collision.transform.tag == tagToCheckEndLine)
+        {
+           
+            EndGame();
+        }
+    }
+
+    public void EndGame()
+    {
+        _canRun = false;
+        endScreen.SetActive(true);
+    }
+
+    public void StartToRun()
+    {
+        _canRun = true;
+        startScreen.SetActive(false);
     }
 }
