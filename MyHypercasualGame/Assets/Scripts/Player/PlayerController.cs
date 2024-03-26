@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Ebac.Core.Singleton;
+using DG.Tweening;
 public class PlayerController : Singleton<PlayerController>
 {
 
@@ -100,5 +101,24 @@ public class PlayerController : Singleton<PlayerController>
     public void SetInvincible(bool value)
     {
         invincible = value;
+    }
+
+    public void ChangeHeight(float amount,float duration,float animationDuration,Ease ease)
+    {
+        //var p = transform.position;
+        //p.y = startPosition.y + amount;
+        //transform.position = p;
+
+        transform.DOMoveY(startPosition.y + amount,animationDuration).SetEase(ease);
+        Invoke("ResetHeight", duration);
+    }
+
+    public void ResetHeight()
+    {
+        //var p = transform.position;
+        //p.y = startPosition.y;
+        //transform.position = p;
+
+        transform.DOMoveY(startPosition.y, 0.1f);
     }
 }
