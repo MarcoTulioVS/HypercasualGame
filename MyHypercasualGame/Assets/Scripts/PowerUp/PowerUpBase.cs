@@ -10,6 +10,7 @@ public class PowerUpBase : ItemCollectableBase
 
     protected override void OnCollect()
     {
+        StartPowerUp();
         base.OnCollect();
     }
 
