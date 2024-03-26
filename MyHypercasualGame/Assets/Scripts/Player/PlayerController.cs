@@ -30,6 +30,10 @@ public class PlayerController : Singleton<PlayerController>
     private Vector3 startPosition;
 
     public bool invincible;
+
+    [Header("Coin Setup")]
+
+    public GameObject coinCollector;
     private void Start()
     {
         startPosition = transform.position;
@@ -120,5 +124,10 @@ public class PlayerController : Singleton<PlayerController>
         //transform.position = p;
 
         transform.DOMoveY(startPosition.y, 0.1f);
+    }
+
+    public void ChangeCoinCollectorSize(float amount)
+    {
+        coinCollector.transform.localScale = Vector3.one * amount;
     }
 }
